@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+main {
+    padding: 20px;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.about,
+.menu {
+    margin-bottom: 30px;
+}
+
+.menu-item {
+    margin-bottom: 20px;
+}
+
+.menu-item img {
+    max-width: 100%;
+    height: auto;
+}
+/* footer */
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+/* Your existing CSS styles */
+
+.about {
+    padding: 20px;
+    text-align: center;
+}
+
+.about h2 {
+    margin-bottom: 20px;
+}
+
+.about p {
+    margin-bottom: 10px;
+}
+
+/* style form */
+.form_menu {
+    display: flex;
+    place-items: center;
+    justify-content: center;
+}
+.form_menu h2 {
+    text-align: center;
+}
+
+/* .btn {
+    float: right;
+} */
+
+/* .table td,
+.table th {
+    width: 100%;
+} */
+/* .table tr {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+} */
