@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -9,4 +10,5 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
-Route::resource('/Menu', MenuController::class);
+Route::resource('/menu', MenuController::class);
+Route::resource('/user', UsersController::class);
