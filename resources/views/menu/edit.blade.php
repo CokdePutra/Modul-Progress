@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="col-3">
                 <form action="{{ route('menu.update', $item->id) }}" method="POST">
                     @method('put')
                     @csrf
@@ -24,7 +24,8 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-warning">Edit</button>
+                    <button type="submit" class="btn btn-warning mb-2 w-100">Edit</button>
+                    <a href="{{ route('menu.index') }}" class="btn btn-info w-100">Kembali</a>
                 </form>
             </div>
         </div>

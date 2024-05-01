@@ -3,6 +3,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-6">
+                <h2 class="text-center">Daftar User</h2>
                 <a href="{{ route('user.create') }}" class="btn btn-primary mt-5">Tambah</a>
                 <table class="table table-striped ms-auto">
                     <thead>
@@ -37,3 +38,25 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: 'Success',
+                text: "{{ session('success') }}",
+                icon: 'success',
+                confirmButtonText: 'OK!'
+            })
+        </script>
+    @endif
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                title: 'Error',
+                text: "{{ session('error') }}",
+                icon: 'error',
+                confirmButtonText: 'OK!'
+            })
+        </script>
+    @endif
+@endpush

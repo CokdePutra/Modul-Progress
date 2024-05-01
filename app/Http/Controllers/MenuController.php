@@ -79,7 +79,7 @@ class MenuController extends Controller
                 'harga' => 'required|numeric|min:0',
             ]);
             $menu->update($validatedData);
-            return redirect('/menu')->with('message', 'Menu Edited Successfully');
+            return redirect('/menu')->with('success', 'Menu Edited Successfully');
         } catch (Exception $e) {
             return redirect()->back()->withInput()->with('error', 'Failed to update menu');
         }
@@ -92,7 +92,7 @@ class MenuController extends Controller
     {
         try {
             $menu->delete();
-            return redirect('/menu')->with('message', 'Menu deleted successfully');
+            return redirect('/menu')->with('success', 'Menu deleted successfully');
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'Failed to delete menu');
         }
