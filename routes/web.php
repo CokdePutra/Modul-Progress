@@ -10,5 +10,21 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
-Route::resource('/menu', MenuController::class);
-Route::resource('/user', UsersController::class);
+Route::group(['prefix' => '/menu'], function () {
+    Route::get('/', [MenuController::class, 'index'])->name('menu.index');
+    Route::get('/create', [MenuController::class, 'create'])->name('menu.create');
+    Route::post('/', [MenuController::class, 'store'])->name('menu.store');
+    Route::get('/{menu}', [MenuController::class, 'show'])->name('menu.show');
+    Route::get('/{menu}/edit', [MenuController::class, 'edit'])->name('menu.edit');
+    Route::put('/{menu}', [MenuController::class, 'update'])->name('menu.update');
+    Route::delete('/{menu}', [MenuController::class, 'destroy'])->name('menu.destroy');
+});
+Route::group(['prefix' => '/user'], function () {
+    Route::get('/', [UsersController::class, 'index'])->name('user.index');
+    Route::get('/create', [UsersController::class, 'create'])->name('user.create');
+    Route::post('/', [UsersController::class, 'store'])->name('user.store');
+    Route::get('/{user}', [UsersController::class, 'show'])->name('user.show');
+    Route::get('/{user}/edit', [UsersController::class, 'edit'])->name('user.edit');
+    Route::put('/{user}', [UsersController::class, 'update'])->name('user.update');
+    Route::delete('/{user}', [UsersController::class, 'destroy'])->name('user.destroy');
+});
