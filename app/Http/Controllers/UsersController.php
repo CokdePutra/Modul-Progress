@@ -12,7 +12,7 @@ class UsersController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index()
     {
         $viewData = [
             'users' => User::all(),
@@ -31,7 +31,7 @@ class UsersController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request) 
     {
         try {
             $validatedData = $request->validate([
@@ -40,7 +40,7 @@ class UsersController extends Controller
                 'password' => 'required|string|min:6',
             ]);
 
-            $user = User::create($validatedData);
+            User::create($validatedData);
 
             return redirect('/user')->with('message', 'User created successfully');
         } catch (ValidationException $e) {
@@ -53,7 +53,7 @@ class UsersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
     }
@@ -61,7 +61,7 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id): View
+    public function edit($id): View
     {
         $user = User::findOrFail($id);
         $viewData = [

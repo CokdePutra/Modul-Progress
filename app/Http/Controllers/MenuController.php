@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
-use App\Http\Requests\StoreMenuRequest;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdateMenuRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -14,7 +14,7 @@ class MenuController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Menu $menu): View
+    public function index(): View
     {
         $viewData = [
             'TabelMenu' => Menu::all(),
@@ -34,7 +34,7 @@ class MenuController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMenuRequest $request): RedirectResponse
+    public function store(Request $request)
     {
         try {
             $validatedData = $request->validate([
@@ -51,7 +51,7 @@ class MenuController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Menu $menu)
+    public function show(Request $request)
     {
         //
     }
@@ -59,10 +59,10 @@ class MenuController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Menu $menu): View
+    public function edit($id)
     {
         $viewData = [
-            'item' => $menu
+            'item' => Menu::findOrFail($id),
         ];
 
         return view('menu.edit', $viewData);
@@ -71,8 +71,9 @@ class MenuController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMenuRequest $request, Menu $menu): RedirectResponse
+    public function update(Request $request, $id)
     {
+        $menu = Menu::findOrFail($id);
         try {
             $validatedData = $request->validate([
                 'nama_menu' => 'required|string|min:3|max:255',
@@ -88,8 +89,9 @@ class MenuController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Menu $menu): RedirectResponse
+    public function destroy($id)
     {
+        $menu = Menu::findOrFail($id);
         try {
             $menu->delete();
             return redirect('/menu')->with('success', 'Menu deleted successfully');
